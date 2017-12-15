@@ -6,10 +6,13 @@
 (defn display-by-state
   [expenditures]
   [:div {:class "all-states"}
-  (println expenditures)
+  [:ul
     (map
-      (fn [expenditure] [:ul {:class "state"} [:li (h (:state expenditure))] [:li (h (:type expenditure))] [:li (h (:total expenditure))]])
-      expenditures)])
+      (fn [expenditure] [:li {:class "state"}
+                        [:p "State: " (h (:state expenditure))]
+                        [:p "School Type: "(h (:type expenditure))]
+                        [:p "Total Expenditure: "(h (:total expenditure))]])
+      expenditures)]])
 
 (defn display-index
   [expenditures]
