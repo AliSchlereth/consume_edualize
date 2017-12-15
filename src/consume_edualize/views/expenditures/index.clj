@@ -8,7 +8,7 @@
   [:div {:class "all-states"}
   (println expenditures)
     (map
-      (fn [expenditure] [:h2 {:class "state"} (h (:state expenditure ))])
+      (fn [expenditure] [:ul {:class "state"} [:li (h (:state expenditure))] [:li (h (:type expenditure))] [:li (h (:total expenditure))]])
       expenditures)])
 
 (defn display-index
