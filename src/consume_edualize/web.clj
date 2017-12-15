@@ -4,6 +4,21 @@
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defualts site-defaults]]
             [consume_edualize.controllers.expenditures :as expenditures]
-            [consume_edualize.views.layout :as layout]
-            [consume_edualize.models.migration :as schema])
+            [consume_edualize.views.layout :as layout])
   (:gen-class))
+
+(defroutes routes
+  consume-edualize/routes
+    (route/resources "/")
+    (route/not-found (layout/four-oh-four)))
+
+(def application (wrap-defaults routes site-defaults))
+
+(defn start
+  [port]
+  (ring/run-jetty application {:port port
+                               :join? false}))
+
+(defn -main []
+  (let [port (Integer. (or (System/getenv "PORT") "8080"))]
+    (start port)))
