@@ -4,7 +4,7 @@
 
 (defn parse-JSON
   [response-body]
-  (json/read-str response-body))
+  (json/read-str response-body :key-fn keyword))
 
 (defn get-endpoint
   "get json from endpoint"

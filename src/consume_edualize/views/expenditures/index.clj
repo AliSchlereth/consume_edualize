@@ -7,12 +7,12 @@
   [expenditures]
   [:div {:class "all-states"}
   (println expenditures)
-  (map
-    (fn [expenditure] [:h2 {:class "state"} (h (:body expenditure))])
-    expenditures)])
+    (map
+      (fn [expenditure] [:h2 {:class "state"} (h (:state expenditure ))])
+      expenditures)])
 
 (defn display-index
   [expenditures]
   (layout/common "Edualize"
                   [:div {:class "clear"}]
-                  (display-by-state expenditures)))
+                    (display-by-state expenditures)))
