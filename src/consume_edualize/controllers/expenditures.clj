@@ -1,4 +1,4 @@
-(ns consume_edualize.expenditures
+(ns consume_edualize.controllers.expenditures
   (:require [compojure.core :refer [defroutes GET]]
             [clojure.string :as str]
             [ring.util.response :as ring]
@@ -7,7 +7,7 @@
 
 (defn index
   []
-  (index/format (model/get-endpoint)))
+  (index/display-index (model/all)))
 
 (defroutes routes
   (GET "/" [] (index)))

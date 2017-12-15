@@ -1,14 +1,14 @@
 (ns consume_edualize.web
   (:require [compojure.core :refer [defroutes]]
-            [ring.adapter.jett :as ring]
+            [ring.adapter.jetty :as ring]
             [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defualts site-defaults]]
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [consume_edualize.controllers.expenditures :as expenditures]
             [consume_edualize.views.layout :as layout])
   (:gen-class))
 
 (defroutes routes
-  consume-edualize/routes
+  expenditures/routes
     (route/resources "/")
     (route/not-found (layout/four-oh-four)))
 
